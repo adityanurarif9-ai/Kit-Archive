@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f6f0">
+  <meta name="description" content="Arsip foto jersey klub sepak bola Eropa. Jelajahi klub, musim, dan jersey Home, Away, serta Third.">
+  <title>Kit Archive — Jersey Klub Eropa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="catalog.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Ke konten</a>
+  <header class="topbar" id="atas">
+    <div class="shell head-inner">
+      <span class="head-label">ARSIP JERSEY EROPA</span>
+      <a class="brand" href="#atas" aria-label="Kit Archive, beranda"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5a2 2 0 1 0-2-2M12 5v2l9 7c1 .8.5 2-.8 2H3.8C2.5 16 2 14.8 3 14l9-7"/></svg></span>KIT ARCHIVE</a>
+      <nav aria-label="Navigasi utama">
+        <button type="button" id="nav-clubs">Klub</button><a href="#koleksi">Koleksi</a>
+        <button type="button" id="nav-compare">Bandingkan<span id="compare-count"></span></button>
+        <button type="button" id="nav-saved">Incaran<span id="saved-count"></span></button>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="shell">
+    <section class="showcase" aria-label="Linimasa jersey">
+      <div class="spotlight" id="spotlight">
+        <div class="spot-copy">
+          <div class="eyebrow"><span></span><span class="club-location" id="club-location">SPANYOL / LA LIGA</span></div>
+          <h1 id="club-name">REAL MADRID</h1>
+          <button class="club-picker" type="button" id="choose-club">Pilih klub <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="stage" id="stage" aria-label="Pratinjau jersey, geser untuk mengganti musim" tabindex="0">
+          <div class="stage-top"><div class="rack-types filters" id="rack-types" role="group" aria-label="Jenis jersey di rak">
+            <button type="button" data-kind="home" aria-pressed="true">Home</button>
+            <button type="button" data-kind="away" aria-pressed="false">Away</button>
+            <button type="button" data-kind="third" aria-pressed="false">Third</button>
+          </div><button type="button" class="utility" id="rack-compare" aria-haspopup="dialog">+ Bandingkan</button></div>
+          <div class="rail" aria-hidden="true"></div>
+          <div class="rack" id="rack"></div>
+          <div class="arrows"><button type="button" id="previous" aria-label="Musim lebih baru">←</button><button type="button" id="next" aria-label="Musim lebih lama">→</button></div>
+          <div class="stage-bottom"><div class="current" aria-live="polite"><span id="current-type">HOME KIT</span><strong id="current-season">2023/24</strong></div><button type="button" class="details-link" id="rack-details">Lihat jersey <span aria-hidden="true">↗</span></button></div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-caption"><span aria-hidden="true">◷</span> <b id="timeline-label">LINI MASA</b></div>
+        <div class="season-options" id="seasons" role="group" aria-label="Pilih musim"></div>
+      </div>
+    </section>
+    <section id="koleksi" class="collection" aria-labelledby="collection-title">
+      <div class="collection-header">
+        <div><div class="eyebrow"><span></span><span class="club-location" id="collection-club">REAL MADRID</span></div><h2 id="collection-title">KOLEKSI JERSEY</h2></div>
+        <div class="collection-controls">
+          <div class="filters" id="filters" role="group" aria-label="Jenis jersey">
+            <button type="button" data-kind="all" aria-pressed="true">Semua</button>
+            <button type="button" data-kind="home" aria-pressed="false">Home</button>
+            <button type="button" data-kind="away" aria-pressed="false">Away</button>
+            <button type="button" data-kind="third" aria-pressed="false">Third</button>
+          </div>
+          <select id="season-filter" aria-label="Filter berdasarkan musim"><option value="all">Semua musim</option></select>
+        </div>
+      </div>
+      <p class="result-count" id="result-count" aria-live="polite"></p>
+      <div class="collection-grid" id="cards"></div>
+      <button class="more" type="button" id="more">Tampilkan lebih banyak <span aria-hidden="true">↓</span></button>
+      <noscript>Aktifkan JavaScript untuk menjelajahi koleksi.</noscript>
+    </section>
+  </main>
+  <footer class="shell footer"><span><strong>KIT ARCHIVE</strong> · Arsip jersey klub Eropa</span><a href="https://www.footylogos.com/football-kits" target="_blank" rel="noopener noreferrer">Sumber foto ↗</a><a href="https://www.footballkitarchive.com/" target="_blank" rel="noopener noreferrer">Arsip jersey lainnya ↗</a><a href="#atas">Kembali ke atas ↑</a></footer>
+  <dialog id="clubs" class="club-dialog" aria-labelledby="clubs-title">
+    <button type="button" class="close" id="close-clubs" aria-label="Tutup pemilih klub">×</button>
+    <h2 id="clubs-title">PILIH KLUB</h2>
+    <div class="directory-controls">
+      <label>Klub<input id="club-search" type="search" placeholder="Cari nama klub" autocomplete="off" autofocus></label>
+      <label>Negara<select id="country-filter"></select></label>
+    </div>
+    <p class="result-count" id="club-count" aria-live="polite"></p>
+    <div class="club-list" id="club-list"></div>
+    <p class="directory-footer"><a class="source" href="https://www.footballkitarchive.com/" target="_blank" rel="noopener noreferrer">Cari klub dan musim lain di Football Kit Archive ↗</a></p>
+  </dialog>
+  <dialog class="tool-dialog" id="compare" aria-labelledby="compare-title">
+    <button type="button" class="close" id="close-compare" aria-label="Tutup perbandingan">×</button>
+    <h2 id="compare-title">BANDINGKAN JERSEY</h2>
+    <p class="tool-note" id="compare-note" aria-live="polite"></p>
+    <div class="compare-grid" id="compare-grid"></div>
+    <div class="tool-actions">
+      <button class="utility" id="compare-back" type="button">Lanjut pilih jersey</button>
+      <button class="utility utility-primary" id="share-compare" type="button" disabled>Salin link perbandingan</button>
+    </div>
+    <label class="share-field" id="share-field" hidden>Link perbandingan<input type="url" id="share-url" readonly></label>
+    <p class="tool-note" id="share-status" role="status"></p>
+  </dialog>
+  <dialog class="tool-dialog" id="saved" aria-labelledby="saved-title">
+    <button type="button" class="close" id="close-saved" aria-label="Tutup daftar incaran">×</button>
+    <h2 id="saved-title">DAFTAR INCARAN</h2>
+    <p class="tool-note" id="saved-note" aria-live="polite"></p>
+    <div class="saved-grid" id="saved-grid"></div>
+  </dialog>
+  <dialog id="details" aria-labelledby="detail-title">
+    <button type="button" class="close" id="close" aria-label="Tutup detail" autofocus>×</button>
+    <div class="dialog-media" id="detail-media"></div>
+    <div class="dialog-copy"><div class="eyebrow"><span></span><span class="club-location" id="detail-club"></span></div><h2 id="detail-title"></h2><p id="detail-description"></p><dl><div><dt>Musim</dt><dd id="detail-season"></dd></div><div><dt>Jenis</dt><dd id="detail-kind"></dd></div><div><dt>Produsen</dt><dd id="detail-maker"></dd></div><div id="sponsor-row"><dt>Sponsor depan</dt><dd id="detail-sponsor"></dd></div></dl><a class="source" id="detail-source" target="_blank" rel="noopener noreferrer">Lihat sumber ↗</a></div>
+    <div class="detail-actions">
+      <button class="utility" id="detail-save" type="button" aria-pressed="false">Simpan incaran</button>
+      <button class="utility utility-primary" id="detail-compare" type="button" aria-haspopup="dialog">+ Bandingkan</button>
+      <p class="tool-note" id="detail-action-status" role="status"></p>
+    </div>
+  </dialog>
+  <dialog class="tool-dialog" id="photo-zoom" aria-labelledby="zoom-title">
+    <button type="button" class="close" id="close-zoom" aria-label="Tutup foto">×</button>
+    <h2 id="zoom-title"></h2>
+    <div class="zoom-media" id="zoom-media"></div>
+  </dialog>
+  <p class="action-toast" id="action-toast" role="status" hidden></p>
+</body>
+</html>
